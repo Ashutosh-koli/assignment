@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useCart } from "../context/CartContext";
-import { db, auth } from "../firebase";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
 
 export default function CheckoutPage() {
@@ -13,43 +11,19 @@ export default function CheckoutPage() {
     email: "",
     address: "",
   });
-
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currUser) => {
-      setUser(currUser);
-    });
-    return () => unsubscribe();
-  }, []);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitted(true);
 
-    const total = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
+    // Optionally: Send to Firestore or another backend
 
-    const orderData = {
-      userId: user ? user.uid : null,
-      customer: form,
-      items: cartItems,
-      total,
-      createdAt: Timestamp.now(),
-    };
-
-    try {
-      await addDoc(collection(db, "orders"), orderData);
-      clearCart();
-      setSubmitted(true);
-    } catch (error) {
-      console.error("Error saving order:", error);
-    }
+    clearCart(); // Clear cart after order
   };
 
   const total = cartItems.reduce(
@@ -57,11 +31,21 @@ export default function CheckoutPage() {
     0
   );
 
+  if (cartItems.length === 0 && !submitted) {
+    return (
+      <div className="checkout-page">
+        <h2>Your cart is empty.</h2>
+        <button onClick={() => navigate("/")}>Go Back to Shop</button>
+      </div>
+    );
+  }
+
   if (submitted) {
     return (
       <div className="checkout-page">
         <h2>✅ Thank you for your order!</h2>
-        <p>We’ll send confirmation to <strong>{form.email}</strong>.</p>
+        <p>We’ll send a confirmation to <strong>{form.email}</strong>.</p>
+        <button onClick={() => navigate("/")}>Continue Shopping</button>
       </div>
     );
   }
