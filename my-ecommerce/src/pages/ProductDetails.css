@@ -1,0 +1,41 @@
+.product-details {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  background-color: #f9f9f9;
+  flex-wrap: wrap;
+}
+
+.product-image {
+  max-width: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-info {
+  max-width: 500px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin: 10px 0;
+}
+
+.description {
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+.add-to-cart {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}

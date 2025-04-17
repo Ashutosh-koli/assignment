@@ -1,0 +1,68 @@
+/* src/components/Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 12px 24px;
+  color: white;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+.cart-link {
+  position: relative;
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.logout-btn {
+  padding: 6px 12px;
+  background-color: #fff;
+  border: none;
+  color: #007bff;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.welcome {
+  font-size: 0.9rem;
+}
