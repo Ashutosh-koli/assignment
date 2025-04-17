@@ -12,7 +12,11 @@ export default function CartPage() {
   );
 
   if (cartItems.length === 0) {
-    return <div className="cart-page"><h2>Your cart is empty.</h2></div>;
+    return (
+      <div className="cart-page">
+        <h2>Your cart is empty.</h2>
+      </div>
+    );
   }
 
   return (
@@ -24,8 +28,12 @@ export default function CartPage() {
             <img src={item.images[0]} alt={item.title} />
             <div className="item-info">
               <h4>{item.title}</h4>
-              <p>${item.price} × {item.quantity}</p>
-              <p><strong>Total:</strong> ${item.price * item.quantity}</p>
+              <p>
+                ${item.price} × {item.quantity}
+              </p>
+              <p>
+                <strong>Total:</strong> ${item.price * item.quantity}
+              </p>
               <button onClick={() => removeFromCart(item.id)}>Remove</button>
             </div>
           </div>
@@ -33,10 +41,7 @@ export default function CartPage() {
       </div>
       <div className="cart-total">
         <h3>Grand Total: ${total.toFixed(2)}</h3>
-        <button
-          className="checkout-btn"
-          onClick={() => navigate("/checkout")}
-        >
+        <button className="checkout-btn" onClick={() => navigate("/checkout")}>
           Proceed to Checkout
         </button>
       </div>

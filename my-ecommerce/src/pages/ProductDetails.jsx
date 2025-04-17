@@ -10,15 +10,19 @@ export default function ProductDetails() {
 
   useEffect(() => {
     fetch(`https://api.escuelajs.co/api/v1/products/${id}`)
-      .then(res => res.json())
-      .then(data => setProduct(data));
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
   }, [id]);
 
   if (!product) return <p>Loading...</p>;
 
   return (
     <div className="product-details">
-      <img src={product.images[0]} alt={product.title} className="product-image" />
+      <img
+        src={product.images[0]}
+        alt={product.title}
+        className="product-image"
+      />
       <div className="product-info">
         <h2>{product.title}</h2>
         <p className="price">${product.price}</p>

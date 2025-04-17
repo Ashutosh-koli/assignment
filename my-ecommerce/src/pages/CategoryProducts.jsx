@@ -21,7 +21,9 @@ export default function CategoryProducts() {
             <img src={product.images[0]} alt={product.title} />
             <h4>{product.title}</h4>
             <p>${product.price}</p>
-            <a href={`/product/${product.id}`} className="details-link">View</a>
+            <a href={`/product/${product.id}`} className="details-link">
+              View
+            </a>
           </div>
         ))}
       </div>

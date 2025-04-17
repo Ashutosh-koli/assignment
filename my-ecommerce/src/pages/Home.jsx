@@ -8,12 +8,12 @@ export default function Home() {
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((res) => res.json())
-      .then(data => setProducts(data));
+      .then((data) => setProducts(data));
   }, []);
 
   return (
     <main className="home-container">
-      {products.map(product => (
+      {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </main>

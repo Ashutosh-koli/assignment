@@ -13,7 +13,9 @@ export default function Cart() {
           <img src={item.images[0]} alt={item.title} />
           <div>
             <p>{item.title}</p>
-            <p>${item.price} x {item.quantity}</p>
+            <p>
+              ${item.price} x {item.quantity}
+            </p>
           </div>
           <button onClick={() => removeFromCart(item.id)}>Remove</button>
         </div>

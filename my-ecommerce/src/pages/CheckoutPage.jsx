@@ -44,7 +44,9 @@ export default function CheckoutPage() {
     return (
       <div className="checkout-page">
         <h2>✅ Thank you for your order!</h2>
-        <p>We’ll send a confirmation to <strong>{form.email}</strong>.</p>
+        <p>
+          We’ll send a confirmation to <strong>{form.email}</strong>.
+        </p>
         <button onClick={() => navigate("/")}>Continue Shopping</button>
       </div>
     );
@@ -80,7 +82,7 @@ export default function CheckoutPage() {
 
         <h3>Order Summary</h3>
         <ul className="summary">
-          {cartItems.map(item => (
+          {cartItems.map((item) => (
             <li key={item.id}>
               {item.title} × {item.quantity} = ${item.price * item.quantity}
             </li>
@@ -88,7 +90,9 @@ export default function CheckoutPage() {
         </ul>
         <p className="total">Total: ${total.toFixed(2)}</p>
 
-        <button type="submit" className="submit-btn">Place Order</button>
+        <button type="submit" className="submit-btn">
+          Place Order
+        </button>
       </form>
     </div>
   );

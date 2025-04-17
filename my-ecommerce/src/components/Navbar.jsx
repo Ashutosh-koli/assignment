@@ -24,12 +24,16 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <Link to="/" className="logo">🛍️ Shop</Link>
+      <Link to="/" className="logo">
+        🛍️ Shop
+      </Link>
 
       <div className="nav-links">
         <Link to="/cart" className="cart-link">
-        🛒<span className="cart-count">({cartItems.reduce((sum, item) => sum + item.quantity, 0)})</span>
-
+          🛒
+          <span className="cart-count">
+            ({cartItems.reduce((sum, item) => sum + item.quantity, 0)})
+          </span>
         </Link>
 
         {!user ? (
@@ -40,7 +44,9 @@ export default function Navbar() {
         ) : (
           <>
             <span className="welcome">Hi, {user.email}</span>
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
           </>
         )}
       </div>
